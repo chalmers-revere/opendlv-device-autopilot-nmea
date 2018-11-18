@@ -1,15 +1,15 @@
 ## OpenDLV Microservice to interface with NMEA-based autopilot system
 
-##Build:
+## Build:
 
 ```
-docker build -f Dockerfile.amd64 -t chalmersrevere/opendlv-device-autopilot-nmea:v0.0.1 
+docker build -f Dockerfile.amd64 -t chalmersrevere/opendlv-device-autopilot-nmea-amd64:v0.0.1 
 ```
 
-##Run:
+## Run:
 
 ```
-docker run -ti --device=/dev/ttyACM0 chalmersrevere/opendlv-device-autopilot-nmea:v0.0.1 opendlv-device-autopilot-nmea --cid=111 --nmea-port=/dev/ttyACM0  --nmea-baudrate=4800 --freq=1 --verbose
+docker run -ti --device=/dev/ttyACM0 chalmersrevere/opendlv-device-autopilot-nmea-amd64:v0.0.1 opendlv-device-autopilot-nmea --cid=111 --nmea-port=/dev/ttyACM0  --nmea-baudrate=4800 --freq=1 --verbose
 ```
 
 
