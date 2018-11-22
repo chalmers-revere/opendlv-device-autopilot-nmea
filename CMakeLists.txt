@@ -40,7 +40,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} \
     -fomit-frame-pointer \
     -pipe \
     -pedantic -pedantic-errors \
-    -Werror \
     -Weffc++ \
     -Wall -Wextra -Wshadow -Wdeprecated \
     -Wdiv-by-zero -Wfloat-equal -Wfloat-conversion -Wsign-compare -Wpointer-arith \
@@ -73,12 +72,12 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
 
 ################################################################################
 # Gather all object code first to avoid double compilation.
-add_library(${PROJECT_NAME}-core OBJECT ${CMAKE_CURRENT_SOURCE_DIR}/src/nmea-encoder.cpp ${CMAKE_CURRENT_SOURCE_DIR}/src/nmea-decoder.cpp ${CMAKE_CURRENT_SOURCE_DIR}/src/serial-port.hpp)
+add_library(${PROJECT_NAME}-core OBJECT ${CMAKE_CURRENT_SOURCE_DIR}/src/nmea-encoder.cpp ${CMAKE_CURRENT_SOURCE_DIR}/src/nmea-decoder.cpp ${CMAKE_CURRENT_SOURCE_DIR}/src/serialport.hpp)
 # Add dependency to generate .hpp file.
 add_custom_target(generate_opendlv_standard_message_set_hpp DEPENDS ${CMAKE_BINARY_DIR}/opendlv-standard-message-set.hpp)
 add_dependencies(${PROJECT_NAME}-core generate_opendlv_standard_message_set_hpp)
 
-set(LIBRARIES Threads::Threads serialport)
+set(LIBRARIES Threads::Threads)
 
 ################################################################################
 # Create executable.
